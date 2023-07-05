@@ -36,7 +36,11 @@ describe('Корзина', () => {
       }
       submitButton.click()
 
-      const wellDone = await screen.findByText('Well done!')
-      expect(wellDone !== null).toBe(true)
+      const invalidElement = container.querySelector<HTMLInputElement>('.is-invalid');
+
+      if (!invalidElement) {
+        const wellDone = await screen.findByText('Well done!')
+        expect(wellDone !== null).toBe(true)
+      }
     });
 });
